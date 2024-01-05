@@ -1,17 +1,19 @@
-The main task in the given project was to find the best fit of a machine learning model for solar radiation prediction.
+Hello, this is Dev, and here’s my document to explain the python code that I have written for solar predictions.
+In my code I have used 3 models- 
+1. Random Forest Regressor
+2. ExtraTreesRegressor
+3. XGBRegressors
+   
+Firstly  I preprocessed the data by droping all the rows with null values in them and changing the string data into numerical data, then I calculated the correlation among different features of the data and represented it graphically(using heatmaps and bargraph). 
 
-So, I followed the steps below:
+Then I stored all the data that had correlation with Radiation in X and radiation data in y.
 
-1. Data Preprocessing on the CSV file:
-   Importing pandas library and reading the solar_prediction CSV file. 
-   The missing values in columns were dropped using the dropna() function. These missing values were identified by isnull() and then calculated by sum() function.
-2. Data visualisation:
-   The correlation heatmap  
-3. Correlation:
-   The correlation coefficient between temperature and radiation came out to be 0.734. With this correlation coefficient, I proceeded to work on those two variables as one of the features and the target respectively. I have used three models viz Linear Regressor, Random Forest Regressor, and Gradient Boosting Regressor.
+Then I distributed that data among x_train,x_test and y_train,y_test with random state=1 and test size=0.2 cuz It gave the best results.
 
-4. Training Models: 
-   A] Linear Regressor: As this model tries to get a linear relationship, the r2 value for this model did not increase above 0.60. The mse value was higher than expected (above 40000)
-   B] Gradient Boosting Regressor: This model captured the relationship between the feature and target better than linear regressor. The r2 value turned out to be 0.734 with decreased mse value, around 25000.
-   C] Random Forest Regressor: This model turned out to be the best fit as the r2 value reached 0.93 and mse reduced to 6000 with mae around 32.
+Then I developed Random Forest Regressor, ExtraTreesRegressor and XGBRegressors models along with calculating there r2 score, mae and rmse which gives a rough idea as to how correctly is the data predicted. 
+
+I also plotted r2 score, mae and rmse via bar graph as to graphically compare the results of the 3 models.
+
+I also plotted the 3 most correlated data namely Temperature ,Pressure and Speed against Radiation as to show how correctly are these models predicting the Radiation graphically.
+As we can see the predicted data from all 3 models is roughly the same. And also by comparing r2 score Random Forest wins, whereas on comparing mae extra tree regressors win however random forest makes a comeback in rmse value. XGB regressor model is 3rd in every case :< 
 
