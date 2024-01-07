@@ -1,0 +1,64 @@
+So this is a overview of what I did in this Problem Statement-->
+
+### Data Preprocessing
+Though the nan values didnt seem to have a lot effect on the corresponding radiation values, I tried to impute 'em with mean values through SImpleImputer module.
+Initially there was an issue with imputed due to the Date time column not being numerical, but that was sorted out when I considered the other parameters ignoring the date time column for imputation(as it really doesnt make a difference).
+
+Data Correlation and Visualizing
+Correlation and visulaizing using heatmap, bar graph and other plots gave a pretty fair idea of which parameter has how much effect on our target variable aka Radiation, where maximum correlation was observed with Temperature, the value being '0.73'.
+And the least correlation was seen with Wind Direction being '-0.23'.
+
+Decision Tree Regressor Model
+Data was split into training and testing models,
+Test size = 0.2
+Random State = 42
+
+outcome-->
+Mean Absolute Error: 6.597076794310784e-13
+Mean Squared Error: 6.749341995782093e-25
+R-squared: 1.0
+This R2 score was very impressive still another model was to be tried out.
+
+Bayesian Linear Regression Model
+As the temperature correlation with the Radiation(target variable) was seen to be the highest(0.73), polynomial comparison of both were tried out in this model where i tried the outcomes and uncertainties achieved with different degree values
+
+Again the inputs were-->
+Test size = 0.2
+Random state = 42
+
+Outcomes:
+
+Degree = 1
+Mean Absolute Error: 6.597076794310784e-13
+Mean Squared Error: 0.002805110928405552
+R-squared: 0.051305786955890054
+
+Degree = 2
+Mean Absolute Error: 6.597076794310784e-13
+Mean Squared Error: 0.002779660710633128
+R-squared: 0.059913102294800735
+
+Degree = 3
+Mean Absolute Error: 6.597076794310784e-13
+Mean Squared Error: 0.0027780267839264423
+R-squared: 0.060465699625435354
+
+Degree = 4
+Mean Absolute Error: 6.597076794310784e-13
+Mean Squared Error: 0.0027771394433982097
+R-squared: 0.06076579999423337
+
+Degree = 5
+Mean Absolute Error: 6.597076794310784e-13
+Mean Squared Error: 0.0027761076925069987
+R-squared: 0.061114740241081766
+
+The mean absolute error did not seem to differ whereas the Mean squared error and the r2 score improved with icreasing degree.
+It was thus observed that the R2 score for this model seemed to be improving with increased degree of the polynomial parameter, which i couldnt interpret why.
+
+Radiation is propotional to Temp^4 (By Stefan's Formula)
+so the r2 score should have been best with degree=4 but still the r2score improved with degree=5
+
+Overall, Mean absolute error did not seem to make a difference in both models but The mean squared error was much less in the bayesian linear regression......
+Due to a favourable R2 score obtained in the Decision tree regressor I will be going with the Decision Tree Regressor .
+
